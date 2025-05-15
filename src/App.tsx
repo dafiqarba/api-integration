@@ -38,11 +38,11 @@ function App() {
           isError: { message: '', status: false },
         }))
       } catch (err) {
-        console.log(err.message)
+        const error = err as Error
         setPosts(() => ({
           data: [],
           isLoading: false,
-          isError: { message: err as string, status: true },
+          isError: { message: error.message, status: true },
         }))
       } finally {
         setPosts((prevState) => ({ ...prevState, isLoading: false }))
@@ -51,7 +51,6 @@ function App() {
 
     getPosts()
   }, [userId])
-  console.log('post', {err: posts.isError.message, err2: posts.isError.message})
   return (
     <main className="max-sm:p-1 max-sm:pt-8 max-w-5xl w-full flex flex-col justify-center items-center pt-11 centered">
       <h1 className="text-3xl font-bold text-deep-violet tracking-tight mb-1">Posts</h1>
@@ -66,7 +65,7 @@ function App() {
         </div>
       )}
 
-      {/* {posts.isError.status && <ErrorMessage message={posts.isError.message} />} */}
+      {posts.isError.status && <ErrorMessage message={posts.isError.message} />}
 
       <section className="flex flex-col gap-2 max-w-lg mt-6">
         {isPostFound &&

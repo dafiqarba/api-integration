@@ -4,7 +4,7 @@ export const apiRequest = async <T>(
   url: string,
   params?: Record<string, any> | null
 ): Promise<T> => {
-  const newUrl = params ? `${url}s${objectToQueryParams(params)}e` : url
+  const newUrl = params ? `${url}${objectToQueryParams(params)}` : url
 
   try {
     const response = await fetch(newUrl)
