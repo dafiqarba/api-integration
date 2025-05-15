@@ -1,7 +1,12 @@
 {
   "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "target": "es6", // or "es2017" or later
+    "module": "commonjs",
+    "lib": ["es2017", "dom"], // Add "es2017" or later
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true
+  }
 }
